@@ -490,37 +490,37 @@ ready(() => {
         },
     ]
 
-    const myPromise = new Promise((resolve) => {
-        const distances = [];
-        shops.forEach(shop => {
-            new Promise((resolve) => {
-                navigator.geolocation.getCurrentPosition((res) => {
-                    const coords = {
-                        latitude: res.coords.latitude.toFixed(6),
-                        longitude: res.coords.longitude.toFixed(6)
-                    }
+    new Promise(() => {
+        new Promise((resolve) => {
+            navigator.geolocation.getCurrentPosition((res) => {
+                resolve({
+                    latitude: res.coords.latitude.toFixed(6),
+                    longitude: res.coords.longitude.toFixed(6)
+                })
+            });
 
-                    let dist = getDistanceFromLatLonInKm(
-                        coords.latitude,
-                        coords.longitude,
-                        shop.coors.latitude,
-                        shop.coors.longitude
-                    ).toFixed(3);
+        }).then(coors => {
+            let distances = [];
+            shops.forEach(shop => {
+                let dist = getDistanceFromLatLonInKm(
+                    coors.latitude,
+                    coors.longitude,
+                    shop.coors.latitude,
+                    shop.coors.longitude
+                ).toFixed(3)
 
-                    resolve(dist);
-                });
-            }).then(res => {
-                shop.distance = res;
-                const obj = shop;
-                distances.push(obj);
-            })
-            .then(() => resolve(distances));
+                shop.distance = dist;
+                distances.push(shop);
+            });
+            return distances;
+        }).then(res => {
+            res.sort((a, b) => {
+                return a.distance - b.distance;
+            });
+            console.log(res[0]);
         });
 
-    }).then(res => {
-        console.log(res);
     });
-
 
 
 
