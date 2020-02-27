@@ -1,0 +1,508 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img,
+abbr {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul li {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+legend {
+  color: #000;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+*:focus {
+  outline: none;
+}
+
+html.fonts-loaded body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+body {
+  font-size: 16px;
+  font-display: swap;
+  font-family: 'PT Sans', sans-serif;
+  color: #d7b46a;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.ps {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.row-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.container-mini {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.show-xs {
+  display: none !important;
+}
+
+@media screen and (max-width: 576px) {
+  .show-xs {
+    display: block !important;
+  }
+}
+
+.show-sm {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .show-sm {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hide-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hide-xs {
+    display: none !important;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.text-primary {
+  color: #d7b46a;
+}
+
+.title-primary {
+  font-size: 50px;
+  color: #d7b46a;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .title-primary {
+    font-size: 34px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .title-primary {
+    font-size: 24px;
+  }
+}
+
+.title-primary.white {
+  color: #fff;
+}
+
+.title-secondary {
+  font-size: 25px;
+  line-height: 34px;
+  font-weight: normal;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .title-secondary {
+    font-size: 22px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .title-secondary {
+    font-size: 18px;
+    line-height: 23px;
+  }
+}
+
+.title-secondary.white {
+  color: #fff;
+}
+
+button {
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1;
+  cursor: auto;
+}
+
+.title-tertiary {
+  font-size: 23px;
+  color: #333;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .title-tertiary {
+    font-size: 20px;
+  }
+}
+
+.desc-primary {
+  text-align: center;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .overhidden {
+    overflow: hidden;
+  }
+}
+
+.flex-around {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-evenly {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.hr {
+  width: 300px;
+  height: 3px;
+  background-color: #333;
+  margin: 30px auto;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .text-sm-center {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .overhidden {
+    overflow: hidden;
+  }
+}
+
+button {
+  -webkit-appearance: none;
+}
+
+.paragraph {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .paragraph {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .paragraph {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .paragraph {
+    font-size: 15px;
+  }
+}
+
+::-moz-selection {
+  color: #151515;
+  background: #d7b46a;
+}
+
+::selection {
+  color: #151515;
+  background: #d7b46a;
+}
+
+.logo-font,
+.logo {
+  font-family: 'Orbitron', sans-serif;
+}
+
+button {
+  -webkit-appearance: none;
+}
+
+.btn-primary {
+  color: #151515;
+  font-size: 20px;
+  border: none;
+  padding: 10px 25px;
+  background-color: #d7b46a;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  border: 2px solid #d7b46a;
+  -webkit-transition: -webkit-box-shadow .3s ease;
+  transition: -webkit-box-shadow .3s ease;
+  transition: box-shadow .3s ease;
+  transition: box-shadow .3s ease, -webkit-box-shadow .3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 10px #d7b46a;
+          box-shadow: 0 0 10px #d7b46a;
+}
+
+@media only screen and (max-width: 576px) {
+  .btn-primary {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+}
+
+.btn-telegram {
+  color: #151515;
+  font-size: 20px;
+  border: none;
+  padding: 10px 25px;
+  background-color: #d7b46a;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  border: 2px solid #d7b46a;
+  -webkit-transition: -webkit-box-shadow .3s ease;
+  transition: -webkit-box-shadow .3s ease;
+  transition: box-shadow .3s ease;
+  transition: box-shadow .3s ease, -webkit-box-shadow .3s ease;
+  color: #0dace8;
+  background-color: #fff;
+  border-color: #0dace8;
+}
+
+.btn-telegram:hover, .btn-telegram:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 10px #d7b46a;
+          box-shadow: 0 0 10px #d7b46a;
+}
+
+@media only screen and (max-width: 576px) {
+  .btn-telegram {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+}
+
+.btn-telegram:hover, .btn-telegram:focus {
+  color: #fff;
+  background-color: #0dace8;
+  border-color: #0dace8;
+}
+
+.text-right {
+  text-align: right;
+}
+/*# sourceMappingURL=general.css.map */

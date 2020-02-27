@@ -1,0 +1,318 @@
+@import './smart-grid';
+@import './mixins';
+@import './colors';
+
+@include reset();
+
+*:focus {
+    outline: none;
+}
+
+html.fonts-loaded body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+body {
+    font-size: 16px;
+    font-display: swap;
+    font-family: 'PT Sans', sans-serif;
+    color: $color-primary;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.ps {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.row-inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    @include wrapper();
+}
+
+.container-mini {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.show-xs {
+    display: none !important;
+    @include xs(display, block !important);
+}
+
+.show-sm {
+    display: none !important;
+    @include sm(display, block !important);
+}
+
+.hide-sm {
+    @include sm-block {
+        display: none !important;
+    }
+}
+
+.hide-xs {
+    @include xs-block {
+        display: none !important;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.text-primary {
+    color: $color-primary;
+}
+
+.title-primary {
+    @include title-primary();
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.title-secondary {
+    font-size: 25px;
+    line-height: 34px;
+    font-weight: normal;
+    text-align: center;
+
+    @include sm-block {
+        font-size: 22px;
+        line-height: 25px;
+    }
+
+    @include xs-block {
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    &.white {
+        color: #fff;
+    }
+
+}
+
+button {
+    padding: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    line-height: 1;
+    cursor: auto;
+}
+
+.title-tertiary {
+    font-size: 23px;
+    color: #333;
+    margin: 10px 0;
+
+    @include sm-block {
+        font-size: 20px;
+    }
+}
+
+.desc-primary {
+    text-align: center;
+    font-size: 16px;
+}
+
+.overhidden {
+    @include sm-block {
+        overflow: hidden;
+    }
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flex-evenly {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.flex-start {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-end {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.hr {
+    width: 300px;
+    height: 3px;
+    background-color: #333;
+    margin: 30px auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.row {
+    @include row-flex();
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-sm-center {
+    @include sm-block {
+        text-align: center;
+    }
+}
+
+.overhidden {
+    @include sm-block {
+        overflow: hidden;
+    }
+}
+
+button {
+    -webkit-appearance: none;
+}
+
+.paragraph {
+    font-size: 20px;
+
+    @include md-block {
+        font-size: 18px;
+    }
+
+    @include sm-block {
+        font-size: 16px;
+    }
+
+    @include xs-block {
+        font-size: 15px;
+    }
+}
+
+::selection {
+    color: $color-secondary;
+    background: $color-primary;
+}
+
+.logo-font,
+.logo {
+    font-family: 'Orbitron', sans-serif;
+}
+
+button {
+    -webkit-appearance: none;
+}
+
+@mixin btn() {
+    color: $color-secondary;
+    font-size: 20px;
+    border: none;
+    padding: 10px 25px;
+    background-color: $color-primary;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 2px solid $color-primary;
+    transition: box-shadow .3s ease;
+
+    &:hover, &:focus {
+        outline: none;
+        box-shadow: 0 0 10px $color-primary;
+    }
+
+    @media only screen and (max-width: 576px) {
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: 0.5px;
+    }
+}
+
+
+.btn-primary {
+    @include btn();
+}
+
+.btn-telegram {
+    @include btn();
+    color: #0dace8;
+    background-color: #fff;
+    border-color: #0dace8;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        background-color: #0dace8;
+        border-color: #0dace8;
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+@mixin pulse($color, $width, $id) {
+    animation: pulse-#{$id} 2s linear infinite;
+
+
+    @keyframes pulse-#{$id} {
+        0% {
+            box-shadow: 0 0 0 0 rgba($color, .8);
+        }
+
+        10% {
+            transform: scale(1.05);
+        }
+
+        20% {
+            transform: scale(1.05);
+        }
+
+        25% {
+            transform: scale(1);
+        }
+
+        40% {
+            box-shadow: 0 0 0px #{$width / 2} rgba($color, .5);
+
+        }
+
+        80% {
+            box-shadow: 0 0 3px #{$width} rgba($color, 0);
+
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba($color, 0);
+        }
+    }
+}
