@@ -344,6 +344,23 @@ main {
   margin-left: 10px;
 }
 
+.where-to-buy .closest-shop .hide {
+  display: none;
+}
+
+.where-to-buy .closest-shop .content {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.where-to-buy .closest-shop p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
 .contacts .form {
   width: 600px;
   max-width: 100%;

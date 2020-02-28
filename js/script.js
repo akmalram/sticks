@@ -8,6 +8,11 @@ const S = (selector) => {
     return document.querySelectorAll(selector);
 }
 
+const inText = (sel, text) => {
+    const el = document.querySelector(sel);
+    el.innerText = text;
+}
+
 function deg2rad(deg) {
     return deg * (Math.PI / 180)
 }
@@ -272,290 +277,266 @@ ready(() => {
 
 
 ready(() => {
-    const shops = [
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Осиё 16',
-            coors: {
-                latitude: 41.325328,
-                longitude: 69.297832
-            },
-            location: 'https://yandex.uz/maps/-/CKUyE47e',
-        },
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Буюк Ипак Йули 155',
-            coors: {
-                latitude: 41.329473,
-                longitude: 69.346158
-            },
-            location: 'https://yandex.uz/maps/-/CKaczAp7',
-        },
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Абдулла Тўқай 1Б',
-            coors: {
-                latitude: 41.265077,
-                longitude: 69.172792
-            },
-            location: 'https://yandex.uz/maps/-/CKUunCY-',
-        },
 
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Паркент 1',
-            coors: {
-                latitude: 41.318499,
-                longitude: 69.318723
+    const findClosestShop = () => {
+        const shops = [
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Осиё 16',
+                coors: {
+                    latitude: 41.325328,
+                    longitude: 69.297832
+                },
+                location: 'https://yandex.uz/maps/-/CKUyE47e',
             },
-            location: 'https://yandex.uz/maps/-/CKUuv4zg',
-        },
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Буюк Ипак Йули 155',
+                coors: {
+                    latitude: 41.329473,
+                    longitude: 69.346158
+                },
+                location: 'https://yandex.uz/maps/-/CKaczAp7',
+            },
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Абдулла Тўқай 1Б',
+                coors: {
+                    latitude: 41.265077,
+                    longitude: 69.172792
+                },
+                location: 'https://yandex.uz/maps/-/CKUunCY-',
+            },
 
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'Малая кольцевая',
-            coors: {
-                latitude: 41.334142,
-                longitude: 69.302886
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Паркент 1',
+                coors: {
+                    latitude: 41.318499,
+                    longitude: 69.318723
+                },
+                location: 'https://yandex.uz/maps/-/CKUuv4zg',
             },
-            location: 'https://yandex.uz/maps/-/CKUyERyv',
-        },
 
-        {
-            name: 'Lavini',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Буюк Ипак Йули 1',
-            coors: {
-                latitude: 41.311811,
-                longitude: 69.287551
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'Малая кольцевая',
+                coors: {
+                    latitude: 41.334142,
+                    longitude: 69.302886
+                },
+                location: 'https://yandex.uz/maps/-/CKUyERyv',
             },
-            location: 'https://yandex.uz/maps/-/CKUhfMN3',
-        },
 
-        {
-            name: 'Butcoin community',
-            region: 'Мирзо Улугбек',
-            address: 'ул. Кары Ниязи',
-            coors: {
-                latitude: 41.319142,
-                longitude: 69.293403
+            {
+                name: 'Lavini',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Буюк Ипак Йули 1',
+                coors: {
+                    latitude: 41.311811,
+                    longitude: 69.287551
+                },
+                location: 'https://yandex.uz/maps/-/CKUhfMN3',
             },
-            location: 'https://yandex.uz/maps/-/CKaKbWne',
-        },
 
-        {
-            name: 'Lavini',
-            region: 'Яшнабaдский район',
-            address: 'ул. Бойкурган 1',
-            coors: {
-                latitude: 41.315023,
-                longitude: 69.314876
+            {
+                name: 'Butcoin community',
+                region: 'Мирзо Улугбек',
+                address: 'ул. Кары Ниязи',
+                coors: {
+                    latitude: 41.319142,
+                    longitude: 69.293403
+                },
+                location: 'https://yandex.uz/maps/-/CKaKbWne',
             },
-            location: 'https://yandex.uz/maps/-/CKUyAJPb',
-        },
-        {
-            name: 'Vinograd',
-            region: 'Яшнабaдский район',
-            address: 'ул. Эльбека',
-            coors: {
-                latitude: 41.299798,
-                longitude: 69.296447
-            },
-            location: 'https://yandex.com/maps/-/CKU1Q2~q',
-        },
-        {
-            name: 'Butcoin community',
-            region: 'Яшнабaдский район',
-            address: 'ул. Истикбол 37а',
-            coors: {
-                latitude: 41.303852,
-                longitude: 69.287236
-            },
-            location: 'https://yandex.uz/maps/-/CKaKuZPi',
-        },
-        {
-            name: 'Butcoin community',
-            region: 'Яшнабaдский район',
-            address: 'Мавлоно Ниёзи 30Б',
-            coors: {
-                latitude: 41.314616,
-                longitude: 69.325660
-            },
-            location: 'https://yandex.uz/maps/-/CKaKjY1w',
-        },
-        {
-            name: 'Butcoin community',
-            region: 'Яшнабaдский район',
-            address: 'ул. Паркент 26a',
-            coors: {
-                latitude: 41.318648,
-                longitude: 69.320035
-            },
-            location: 'https://yandex.uz/maps/-/CKaKnI-i',
-        },
-        {
-            name: 'Lavini',
-            region: 'Учтепинский район',
-            address: 'ул. Катартал 4',
-            coors: {
-                latitude: 41.276720,
-                longitude: 69.195142
-            },
-            location: 'https://yandex.uz/maps/-/CKUu7R-u',
-        },
-        {
-            name: 'Lavini',
-            region: 'Мирабадский район',
-            address: 'ул. Мирабад 35',
-            coors: {
-                latitude: 41.293624,
-                longitude: 69.270961
-            },
-            location: 'https://yandex.uz/maps/-/CKUyIMIp',
-        },
-        {
-            name: 'Legion',
-            region: 'Мирабадский район',
-            address: 'ул. Фидокор 7/7A',
-            coors: {
-                latitude: 41.295071,
-                longitude: 69.273976
-            },
-            location: 'https://yandex.uz/maps/-/CKUhQE1U',
-        },
-        {
-            name: 'Прайм Тайм',
-            region: 'Мирабадский район',
-            address: 'Мирабадский рынок',
-            coors: {
-                latitude: 41.291166,
-                longitude: 69.274839
-            },
-            location: 'https://yandex.uz/maps/-/CKUhrS24',
-        },
-        {
-            name: 'Прайм Тайм',
-            region: 'Мирабадский район',
-            address: 'ул. Мирабад 27',
-            coors: {
-                latitude: 41.291166,
-                longitude: 69.274839
-            },
-            location: 'https://yandex.uz/maps/-/CKUhrS24',
-        },
-        {
-            name: 'Аср',
-            region: 'Мирабадский район',
-            address: 'ул. Ойбек 44',
-            coors: {
-                latitude: 41.291027,
-                longitude: 69.282298
-            },
-            location: 'https://yandex.uz/maps/-/CKaKiSPC',
-        },
-        {
-            name: 'Vinograd',
-            region: 'Алмазарский район',
-            address: 'ул. Олтинсой 1/2',
-            coors: {
-                latitude: 41.293624,
-                longitude: 69.270961
-            },
-            location: 'https://yandex.uz/maps/-/CKUyIMIp',
-        },
-        {
-            name: 'Butcoin community',
-            region: 'Алмазарский район',
-            address: 'ул. Нурафшан',
-            coors: {
-                latitude: 41.337663,
-                longitude: 69.223299
-            },
-            location: 'https://yandex.uz/maps/-/CKaKnXNi',
-        },
-        {
-            name: 'Vinograd',
-            region: 'Чиланзарский район',
-            address: 'ул. Мукумий 5',
-            coors: {
-                latitude: 41.288944,
-                longitude: 69.229036
-            },
-            location: 'https://yandex.uz/maps/-/CKUhUJp3',
-        },
-    ]
 
-    new Promise(() => {
-        new Promise((resolve) => {
-            navigator.geolocation.getCurrentPosition((res) => {
-                resolve({
-                    latitude: res.coords.latitude.toFixed(6),
-                    longitude: res.coords.longitude.toFixed(6)
-                })
+            {
+                name: 'Lavini',
+                region: 'Яшнабaдский район',
+                address: 'ул. Бойкурган 1',
+                coors: {
+                    latitude: 41.315023,
+                    longitude: 69.314876
+                },
+                location: 'https://yandex.uz/maps/-/CKUyAJPb',
+            },
+            {
+                name: 'Vinograd',
+                region: 'Яшнабaдский район',
+                address: 'ул. Эльбека',
+                coors: {
+                    latitude: 41.299798,
+                    longitude: 69.296447
+                },
+                location: 'https://yandex.com/maps/-/CKU1Q2~q',
+            },
+            {
+                name: 'Butcoin community',
+                region: 'Яшнабaдский район',
+                address: 'ул. Истикбол 37а',
+                coors: {
+                    latitude: 41.303852,
+                    longitude: 69.287236
+                },
+                location: 'https://yandex.uz/maps/-/CKaKuZPi',
+            },
+            {
+                name: 'Butcoin community',
+                region: 'Яшнабaдский район',
+                address: 'Мавлоно Ниёзи 30Б',
+                coors: {
+                    latitude: 41.314616,
+                    longitude: 69.325660
+                },
+                location: 'https://yandex.uz/maps/-/CKaKjY1w',
+            },
+            {
+                name: 'Butcoin community',
+                region: 'Яшнабaдский район',
+                address: 'ул. Паркент 26a',
+                coors: {
+                    latitude: 41.318648,
+                    longitude: 69.320035
+                },
+                location: 'https://yandex.uz/maps/-/CKaKnI-i',
+            },
+            {
+                name: 'Lavini',
+                region: 'Учтепинский район',
+                address: 'ул. Катартал 4',
+                coors: {
+                    latitude: 41.276720,
+                    longitude: 69.195142
+                },
+                location: 'https://yandex.uz/maps/-/CKUu7R-u',
+            },
+            {
+                name: 'Lavini',
+                region: 'Мирабадский район',
+                address: 'ул. Мирабад 35',
+                coors: {
+                    latitude: 41.293624,
+                    longitude: 69.270961
+                },
+                location: 'https://yandex.uz/maps/-/CKUyIMIp',
+            },
+            {
+                name: 'Legion',
+                region: 'Мирабадский район',
+                address: 'ул. Фидокор 7/7A',
+                coors: {
+                    latitude: 41.295071,
+                    longitude: 69.273976
+                },
+                location: 'https://yandex.uz/maps/-/CKUhQE1U',
+            },
+            {
+                name: 'Прайм Тайм',
+                region: 'Мирабадский район',
+                address: 'Мирабадский рынок',
+                coors: {
+                    latitude: 41.291166,
+                    longitude: 69.274839
+                },
+                location: 'https://yandex.uz/maps/-/CKUhrS24',
+            },
+            {
+                name: 'Прайм Тайм',
+                region: 'Мирабадский район',
+                address: 'ул. Мирабад 27',
+                coors: {
+                    latitude: 41.291166,
+                    longitude: 69.274839
+                },
+                location: 'https://yandex.uz/maps/-/CKUhrS24',
+            },
+            {
+                name: 'Аср',
+                region: 'Мирабадский район',
+                address: 'ул. Ойбек 44',
+                coors: {
+                    latitude: 41.291027,
+                    longitude: 69.282298
+                },
+                location: 'https://yandex.uz/maps/-/CKaKiSPC',
+            },
+            {
+                name: 'Vinograd',
+                region: 'Алмазарский район',
+                address: 'ул. Олтинсой 1/2',
+                coors: {
+                    latitude: 41.293624,
+                    longitude: 69.270961
+                },
+                location: 'https://yandex.uz/maps/-/CKUyIMIp',
+            },
+            {
+                name: 'Butcoin community',
+                region: 'Алмазарский район',
+                address: 'ул. Нурафшан',
+                coors: {
+                    latitude: 41.337663,
+                    longitude: 69.223299
+                },
+                location: 'https://yandex.uz/maps/-/CKaKnXNi',
+            },
+            {
+                name: 'Vinograd',
+                region: 'Чиланзарский район',
+                address: 'ул. Мукумий 5',
+                coors: {
+                    latitude: 41.288944,
+                    longitude: 69.229036
+                },
+                location: 'https://yandex.uz/maps/-/CKUhUJp3',
+            },
+        ]
+
+        new Promise(() => {
+            new Promise((resolve) => {
+                navigator.geolocation.getCurrentPosition((res) => {
+                    resolve({
+                        latitude: res.coords.latitude.toFixed(6),
+                        longitude: res.coords.longitude.toFixed(6)
+                    })
+                });
+
+            }).then(coors => {
+                let distances = [];
+                shops.forEach(shop => {
+                    let dist = getDistanceFromLatLonInKm(
+                        coors.latitude,
+                        coors.longitude,
+                        shop.coors.latitude,
+                        shop.coors.longitude
+                    ).toFixed(3);
+
+                    shop.distance = dist * 1000;
+                    distances.push(shop);
+                });
+                return distances;
+            }).then(res => {
+                res.sort((a, b) => {
+                    return a.distance - b.distance;
+                });
+                const closestShop = res[0];
+                inText('.closest-shop .name', closestShop.name);
+                inText('.closest-shop .region', closestShop.region);
+                inText('.closest-shop .address', closestShop.address);
+                inText('.closest-shop .distance-number', closestShop.distance);
+                document.querySelector('.closest-shop .open-map').setAttribute('href', closestShop.location);
+                removeClass(S('.closest-shop .content'), 'hide')
             });
-
-        }).then(coors => {
-            let distances = [];
-            shops.forEach(shop => {
-                let dist = getDistanceFromLatLonInKm(
-                    coors.latitude,
-                    coors.longitude,
-                    shop.coors.latitude,
-                    shop.coors.longitude
-                ).toFixed(3)
-
-                shop.distance = dist;
-                distances.push(shop);
-            });
-            return distances;
-        }).then(res => {
-            res.sort((a, b) => {
-                return a.distance - b.distance;
-            });
-            console.log(res[0]);
         });
-
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
     on('click', S('.closest-shop'), () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((res) => {
-                const coords = {
-                    latitude: res.coords.latitude.toFixed(6),
-                    longitude: res.coords.longitude.toFixed(6)
-                }
-
-                const distance = getDistanceFromLatLonInKm(
-                    coords.latitude, coords.longitude, 41.318741, 69.296822
-                ).toFixed(3);
-
-                alert(`You're ${distance} meters away from the shop`);
-            });
-        } else {
-            alert('Ваш браузер не поддерживает нужные технологии, пожалуйста обновите браузер!');
-        }
+        findClosestShop()
     });
 });
